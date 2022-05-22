@@ -1,6 +1,8 @@
 package com;
 
-import classes.AllTriangle;
+//import classes.AllTriangle;//is not used
+
+import classes.ListTriangle;
 import classes.RightTriangle;
 import classes.Triangle;
 
@@ -20,30 +22,26 @@ public class Main {
      */
     public static void main(String[] args) {
         int sideOne, sideTwo, sideThree;
-        AllTriangle allTriangle = new AllTriangle(N);
 
-        for (int i = 0; i < N; i++) {
+        ListTriangle listTriangle = new ListTriangle();
+        for (int i = 0; i < M; i++) {
             while (!Triangle.existsTriangle(sideOne = ((int) (Math.random() * MAXSIZE + 1)), sideTwo = ((int) (Math.random() * MAXSIZE + 1)), sideThree = ((int) (Math.random() * MAXSIZE + 1)))) {
             }
-            Triangle triangle = new Triangle(sideOne, sideTwo, sideThree);
-            allTriangle.add(triangle);
+            listTriangle.add(new Triangle(sideOne, sideTwo, sideThree));
         }
-        System.out.println(allTriangle);
+        System.out.println(listTriangle);
         System.out.print("Maximum area triangle: ");
-        System.out.println(allTriangle.maxSquare());
+        System.out.println(listTriangle.maxSquare());
 
-        AllTriangle rightTriangles = new AllTriangle(M);
-
-        for (int i = 0; i < M; i++) {
+        ListTriangle rightTrianglesList = new ListTriangle();
+        for (int i = 0; i < N; i++) {
             while (!RightTriangle.existsRightTriangle(sideOne = ((int) (Math.random() * MAXSIZE + 1)), sideTwo = ((int) (Math.random() * MAXSIZE + 1)), sideThree = ((int) (Math.random() * MAXSIZE + 1)))) {
             }
-            RightTriangle rightTriangle = new RightTriangle(sideOne, sideTwo, sideThree);
-            rightTriangles.add(rightTriangle);
+            rightTrianglesList.add(new RightTriangle(sideOne, sideTwo, sideThree));
         }
-        System.out.println(rightTriangles);
+        System.out.println(rightTrianglesList);
         System.out.print("Right ");
-        System.out.println(rightTriangles.minHypotenuseRightTriangle());
-
+        System.out.println(rightTrianglesList.minHypotenuseRightTriangle());
     }
 }
 
